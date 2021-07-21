@@ -1,20 +1,12 @@
 package usersApiTests;
 
-import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeEach;
-import users.UsersApi;
-import users.requestModels.RegisterUserRequestModel;
+import usersApi.client.UsersApiHttpClient;
 
-public class CreateUserBeforeTest {
-
-    protected RegisterUserRequestModel newUser;
-    protected Faker faker;
+public class CreateUserBeforeTest extends BaseTest {
 
     @BeforeEach
-    public void SetUp(){
-        faker = new Faker();
-        newUser = new RegisterUserRequestModel
-                (faker.name().fullName(), faker.internet().safeEmailAddress(), faker.internet().password());
-        UsersApi.registerUser(newUser);
+    public void CreateUserBeforeTestSetUp(){
+        UsersApiHttpClient.registerUser(testUser);
     }
 }
